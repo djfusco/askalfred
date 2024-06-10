@@ -30,12 +30,27 @@ const getEmbedding = async (chunk) => {
         'input': chunk
     };
 
+
+    ///try {
+    ///    const response = await axios.post(url, data, { headers });
+    ///    const embedding = response.data.data[0].embedding;
+    ///    return embedding;
+    ///} catch (error) {
+    ///    console.error(`Error fetching the embedding: ${error}`);
+    ///    return null;
+    ///}
+
     try {
-        const response = await axios.post(url, data, { headers });
-        const embedding = response.data.data[0].embedding;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(data)
+        });
+        const responseJson = await response.json();
+        const embedding = responseJson.data[0].embedding;
         return embedding;
     } catch (error) {
-        console.error(`Error fetching the embedding: ${error}`);
+        console.error('Error fetching the embedding:', error);
         return null;
     }
 };
