@@ -15,7 +15,7 @@ const openai = new OpenAI({
     apiKey: OPENAI_API_KEY,
 });
 
-const axios = require('axios');
+///const axios = require('axios');
 
 const getEmbedding = async (chunk) => {
     const url = 'https://api.openai.com/v1/embeddings';
