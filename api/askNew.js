@@ -15,8 +15,6 @@ const openai = new OpenAI({
     apiKey: OPENAI_API_KEY,
 });
 
-///const axios = require('axios');
-
 const getEmbedding = async (chunk) => {
     const url = 'https://api.openai.com/v1/embeddings';
 
@@ -29,16 +27,6 @@ const getEmbedding = async (chunk) => {
         'model': OPENAI_EMBEDDING_MODEL,
         'input': chunk
     };
-
-
-    ///try {
-    ///    const response = await axios.post(url, data, { headers });
-    ///    const embedding = response.data.data[0].embedding;
-    ///    return embedding;
-    ///} catch (error) {
-    ///    console.error(`Error fetching the embedding: ${error}`);
-    ///    return null;
-    ///}
 
     try {
         const response = await fetch(url, {
