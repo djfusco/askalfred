@@ -116,7 +116,9 @@ export default async function handler(req, res) {
 
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Content-Type', 'application/json');
-      res.status(200).send(sendResponse);
+     // res.status(200).send(sendResponse);
+      res.status(200).json(sendResponse);
+
 
     } catch (error) {
         console.error('Unhandled error in handler:', error);
