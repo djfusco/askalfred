@@ -78,16 +78,6 @@ const generateResponse = async (prompt) => {
 
 export default async function handler(req, res) {
     try {
-
-    if (req.method === 'OPTIONS') {
-        res.setHeader('Access-Control-Allow-Credentials', true);
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-        res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Authorization, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-        res.status(200).end();
-        return;
-    }
-
     const data = req.body;
     const query = data.question;
     const course = data.course;
@@ -114,11 +104,8 @@ export default async function handler(req, res) {
         }
       }
 
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Content-Type', 'application/json');
-     // res.status(200).send(sendResponse);
-      res.status(200).json(sendResponse);
-
+    res.status(200).send(sendResponse);
+    //res.status(200).json(sendResponse);
 
     } catch (error) {
         console.error('Unhandled error in handler:', error);
